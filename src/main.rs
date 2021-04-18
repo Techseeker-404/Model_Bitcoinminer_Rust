@@ -49,7 +49,7 @@ fn main() {
         let new_hash = Box::new(mine_coin(block,transactions,
                 "0000000xa036944e29568d0cff17edbe038f81208fecf9a66be9a2b8321c6ec9".to_string(),
                 difficulty)
-                );
+             );
         println!("New Hash ID:{}", new_hash);
 
     });
