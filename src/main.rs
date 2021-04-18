@@ -26,7 +26,7 @@ fn mine_coin(block:i32,tnxn:String, prev_hash:String,pref_zeroes:i32) -> Box<Str
     let mut new_hash:String = String::new();
     for nonce in MAX_NONCE {
         let detail = block.to_string() + &tnxn + &prev_hash + &nonce.to_string();
-        let new_hash = hash_sha256(detail);
+        new_hash = hash_sha256(detail);
         if new_hash.starts_with(&pre_str) {
             println!("Successfully mined BTC with nonce value: {}", nonce);
             return Box::new(new_hash);
@@ -48,7 +48,8 @@ fn main() {
     let handle = thread::spawn(move|| {
         let new_hash = Box::new(mine_coin(block,transactions,
                 "0000000xa036944e29568d0cff17edbe038f81208fecf9a66be9a2b8321c6ec9".to_string(),
-                difficulty));
+                difficulty)
+                );
         println!("New Hash ID:{}", new_hash);
 
     });
